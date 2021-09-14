@@ -3,7 +3,7 @@ from __future__ import print_function
 
 import sys
 # update your projecty root path before running
-sys.path.insert(0, 'path/to/nsga-net')
+sys.path.insert(0, 'nsga-net')
 
 import torch
 import torch.nn as nn
@@ -17,13 +17,13 @@ import logging
 import argparse
 import numpy as np
 
-from ..misc import utils
+from misc import utils
 
 # model imports
-from ..models import macro_genotypes
-from ..models.macro_models import EvoNetwork
-from ..models import micro_genotypes as genotypes
-from ..models.micro_models import PyramidNetworkCIFAR as PyrmNASNet
+from models import macro_genotypes
+from models.macro_models import EvoNetwork
+from models import micro_genotypes as genotypes
+from models.micro_models import PyramidNetworkCIFAR as PyrmNASNet
 
 parser = argparse.ArgumentParser(description='PyTorch CIFAR10 Testing')
 parser.add_argument('--seed', type=int, default=0, help='random seed')
