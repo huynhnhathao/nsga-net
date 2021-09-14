@@ -17,13 +17,13 @@ import logging
 import argparse
 import numpy as np
 
-from misc import utils
+from ..misc import utils
 
 # model imports
-from models import macro_genotypes
-from models.macro_models import EvoNetwork
-import models.micro_genotypes as genotypes
-from models.micro_models import PyramidNetworkCIFAR as PyrmNASNet
+from ..models import macro_genotypes
+from ..models.macro_models import EvoNetwork
+from ..models import micro_genotypes as genotypes
+from ..models.micro_models import PyramidNetworkCIFAR as PyrmNASNet
 
 parser = argparse.ArgumentParser(description='PyTorch CIFAR10 Testing')
 parser.add_argument('--seed', type=int, default=0, help='random seed')
@@ -70,8 +70,10 @@ def main():
 
     logging.info("args = %s", args)
 
+    # enable cudnn, not sure its purpose
     cudnn.enabled = True
-    cudnn.benchmark = True
+    # benchmark all multiple convolution algs and select the fastest
+    cudnn.benchmark = True  
     np.random.seed(args.seed)
     torch.manual_seed(args.seed)
     torch.cuda.manual_seed(args.seed)
